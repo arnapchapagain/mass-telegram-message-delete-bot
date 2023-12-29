@@ -1,18 +1,20 @@
 import os
+import dotenv
 import asyncio
 from pyrogram import Client
 from datetime import datetime
 from pyrogram.enums import ChatType, ChatMemberStatus
 
+dotenv.load_dotenv()
 
 if not os.path.exists("sessions"):
     os.mkdir("sessions")
     
 
 # Telegram API Keys
-API_HASH = os.getenv("API_HASH")
-API_ID = os.getenv("API_ID")
-PHONE_NUMBER = os.getenv("PHONE_NUMBER")
+API_HASH = dotenv.get_key(".env", "API_HASH")
+API_ID = dotenv.get_key(".env", "API_ID")
+PHONE_NUMBER = dotenv.get_key(".env", "PHONE_NUMBER")
 
 
 async def main():
